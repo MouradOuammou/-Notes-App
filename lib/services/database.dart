@@ -73,5 +73,30 @@ class Database {
     }
   }
 
+  Future<void> delete(String uid, String id) async {
+    try {
+      await _firestore
+          .collection(userCollection)
+          .doc(uid)
+          .collection(noteCollection)
+          .doc(id)
+          .delete();
+    } catch (e) {
+      print("Erreur delete: ${e.toString()}");
+    }
+  }
 
+  Stream<List<NoteModel>> noteStream(String uid) {
+    return _firestore
+        .collection(userCollection)
+        .doc(uid)
+        .collection(noteCollection)
+        .orderBy("creationDate", descending: true)
+        .snapshots()
+        .map((QuerySnapshot query) {
+      return query.docs
+          .map((doc) => NoteModel.fromDocumentSnapshot(doc))
+          .toList();
+    });
+  }
 }
