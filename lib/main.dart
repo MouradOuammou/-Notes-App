@@ -1,17 +1,23 @@
+import 'dart:io';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:noteapp/utils/root.dart';
 import 'package:noteapp/utils/theme.dart';
 import 'controllers/AuthController.dart';
 import 'controllers/UserController.dart';
 import 'firebase_options.dart';
 
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
+  // Initialisation conditionnelle de Firebase
+  if (!Platform.isLinux && !Platform.isWindows && !Platform.isMacOS) {
+    await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  } else {
+    debugPrint(" Firebase n'est pas supporté sur cette plateforme.");
+  }
 
   // Injection des controllers avec GetX
   Get.put<AuthController>(AuthController());
