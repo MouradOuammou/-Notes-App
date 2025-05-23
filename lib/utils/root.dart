@@ -1,5 +1,21 @@
 import 'package:flutter/cupertino.dart';
+import 'package:get/get.dart';
 
-class Root extends StatelessWidget{
+import '../controllers/AuthController.dart';
+import '../screens/auth/login.dart';
 
+
+class Root extends StatelessWidget {
+  final AuthController authController = Get.find<AuthController>();
+
+  @override
+  Widget build(BuildContext context) {
+    return Obx(() {
+      if (authController.user?.uid != null) {
+        return HomePage();
+      } else {
+        return Login();
+      }
+    });
+  }
 }
