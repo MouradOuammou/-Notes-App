@@ -19,5 +19,21 @@ class Themes {
     ),
   );
 
-
+  final ThemeData darkTheme = ThemeData.dark().copyWith(
+    colorScheme: ColorScheme.dark(
+      background: Colors.grey.shade800,
+      secondary: Colors.tealAccent,
+    ),
+    primaryColor: Colors.orange,
+    iconTheme: const IconThemeData(
+      color: Colors.white,
+    ),
+    buttonTheme: const ButtonThemeData(
+      buttonColor: Colors.white,
+    ),
+    floatingActionButtonTheme: FloatingActionButtonThemeData(
+      foregroundColor: Colors.white,
+      backgroundColor: Colors.teal.shade500,
+    ),
+  );
 }
