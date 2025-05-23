@@ -106,5 +106,34 @@ class AddNotePage extends StatelessWidget {
     );
   }
 }
-
+void showEmptyTitleDialog(BuildContext context) {
+  print("Showing empty note dialog");
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        backgroundColor: Theme.of(context).colorScheme.background,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(10.0)),
+        ),
+        title: Text(
+          "Notes is empty!",
+          style: Theme.of(context).textTheme.titleLarge,
+        ),
+        content: Text(
+          'The content of the note cannot be empty to be saved.',
+          style: Theme.of(context).textTheme.titleMedium,
+        ),
+        actions: <Widget>[
+          TextButton(
+            child: Text(
+              "Okay",
+              style: Theme.of(context).textTheme.titleMedium,
+            ),
+            onPressed: () => Get.back(),
+          ),
+        ],
+      );
+    },
+  );
 }
