@@ -7,6 +7,7 @@ import '../../controllers/NoteController.dart';
 import '../settings/Setting.dart';
 import '../widgets/custom_icon_btn.dart';
 import 'add_note.dart';
+import 'note_list.dart';
 
 class HomePage extends GetWidget<AuthController> {
   final AuthController authController = Get.find<AuthController>();
