@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 
 import '../../controllers/AuthController.dart';
 import '../../controllers/UserController.dart';
+import 'SignUp.dart';
 
 class Login extends StatelessWidget {
   Login({Key? key}) : super(key: key);
