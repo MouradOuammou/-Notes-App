@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 
 import '../../controllers/AuthController.dart';
@@ -34,6 +33,22 @@ class SignUp extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+
+  void _showSuccessSnackbar() {
+    Get.snackbar(
+      'Succès!',
+      'Compte créé avec succès!',
+      snackPosition: SnackPosition.BOTTOM,
+      backgroundColor: Colors.green.shade600,
+      colorText: Colors.white,
+      borderRadius: 20,
+      margin: EdgeInsets.all(15),
+      animationDuration: Duration(milliseconds: 500),
+      icon: Icon(Icons.check_circle, color: Colors.white),
+      shouldIconPulse: true,
+      duration: Duration(seconds: 3),
     );
   }
 
@@ -109,9 +124,22 @@ class SignUp extends StatelessWidget {
                       ),
                       minimumSize: Size(250, 50),
                     ),
-                    onPressed: () {
+                    onPressed: () async {
                       if (_formKey.currentState?.validate() ?? false) {
-                        authController.createUser();
+                        try {
+                          await authController.createUser();
+                          _showSuccessSnackbar();
+                          // Optionnel: Naviguer vers une autre page après un délai
+                          // Future.delayed(Duration(seconds: 3), () => Get.offAll(HomePage()));
+                        } catch (e) {
+                          Get.snackbar(
+                            'Erreur',
+                            'Échec de la création du compte',
+                            snackPosition: SnackPosition.BOTTOM,
+                            backgroundColor: Colors.red.shade600,
+                            colorText: Colors.white,
+                          );
+                        }
                       }
                     },
                     child: Text(
