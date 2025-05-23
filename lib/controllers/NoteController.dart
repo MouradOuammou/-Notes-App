@@ -29,14 +29,5 @@ class NoteController extends GetxController {
     }
   }
 
-  @override
-  void onClose() {
-    titleController.dispose();
-    bodyController.dispose();
-    super.onClose();
-  }
-  void clearForm() {
-    titleController.clear();
-    bodyController.clear();
-  }
+}
 }
