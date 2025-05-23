@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 import '../controllers/AuthController.dart';
 import '../screens/auth/login.dart';
+import '../screens/home/home.dart';
 
 
 class Root extends StatelessWidget {
