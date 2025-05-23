@@ -142,7 +142,7 @@ class _ShowNoteState extends State<ShowNote> {
               ),
               onPressed: () {
                 Get.back(); // Ferme la boîte de dialogue
-                Database().delete(authController.user.uid, noteData.id);
+                Database().delete(authController.user!.uid, noteData.id);
                 Get.back(closeOverlays: true); // Retour arrière après suppression
               },
             ),
