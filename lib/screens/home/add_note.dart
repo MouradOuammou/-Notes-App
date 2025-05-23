@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 
 import '../../controllers/AuthController.dart';
 import '../../controllers/UserController.dart';
+import '../../services/database.dart';
+import '../widgets/custom_icon_btn.dart';
 
 class AddNotePage extends StatelessWidget {
   final UserController userController = Get.find<UserController>();
@@ -82,7 +84,7 @@ class AddNotePage extends StatelessWidget {
     ],
     ),
     ),
-    )
+    ),
         // Bouton flottant "Save" pour enregistrer la note
         floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
@@ -93,7 +95,7 @@ class AddNotePage extends StatelessWidget {
       } else {
         // Ajout de la note à la base de données
         Database().addNote(
-          authController.user.uid,
+          authController.user!.uid,
           titleController.text.trim(),
           bodyController.text.trim(),
         );
