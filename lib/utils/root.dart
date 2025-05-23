@@ -10,15 +10,12 @@ class Root extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Obx(() {
+      print("user: ${authController.user}");
       if (authController.user == null) {
-        return Scaffold(
-          body: Center(child: CircularProgressIndicator()),
-        );
+        return Login(); // Affiche la page de connexion si aucun utilisateur connecté
+      } else {
+        return HomePage(); // Affiche la home si utilisateur connecté
       }
-      if (authController.user!.uid != null) {
-        return HomePage();
-      }
-      return Login();
     });
   }
 }
