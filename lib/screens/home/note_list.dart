@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:noteapp/screens/home/show_note.dart';
 
 import '../../controllers/AuthController.dart';
 import '../../controllers/NoteController.dart';
