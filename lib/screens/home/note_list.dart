@@ -40,13 +40,11 @@ class NoteList extends StatelessWidget {
       }
 
       return Expanded(
-        child: StaggeredGridView.countBuilder(
-          itemCount: noteController.notes.length,
-          staggeredTileBuilder: (index) =>
-              StaggeredTile.fit(authController.axisCount.value),
-          crossAxisCount: 4,
+        child: MasonryGridView.count(
+          crossAxisCount: 2,
           mainAxisSpacing: 10,
           crossAxisSpacing: 10,
+          itemCount: noteController.notes.length,
           itemBuilder: (context, index) {
             final note = noteController.notes[index];
             final formattedDate =
@@ -115,6 +113,7 @@ class NoteList extends StatelessWidget {
           },
         ),
       );
+
     });
   }
 }
