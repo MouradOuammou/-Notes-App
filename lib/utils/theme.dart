@@ -21,7 +21,7 @@ class Themes {
 
   final ThemeData darkTheme = ThemeData.dark().copyWith(
     colorScheme: ColorScheme.dark(
-      background: Colors.grey.shade800,
+      surface: Colors.grey.shade800,
       secondary: Colors.tealAccent,
     ),
     primaryColor: Colors.orange,
