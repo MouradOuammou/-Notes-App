@@ -7,6 +7,7 @@ import '../../controllers/AuthController.dart';
 import '../widgets/custom_icon_btn.dart';
 import 'Account.dart';
 import 'DarkMode.dart';
+import 'component/list_tile.dart';
 
 class Setting extends StatelessWidget {
   final AuthController authController = Get.find<AuthController>();

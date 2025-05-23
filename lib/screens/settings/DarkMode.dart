@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../widgets/custom_icon_btn.dart';
+import 'component/list_tile.dart';
 
 class DarkMode extends StatelessWidget {
   @override
