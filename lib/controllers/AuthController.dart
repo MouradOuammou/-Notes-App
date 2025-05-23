@@ -1,9 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_note/controllers/userController.dart';
-import 'package:flutter_note/models/user.dart';
-import 'package:flutter_note/services/database.dart';
+
 import 'package:get/get.dart';
+
+import '../models/user.dart';
+import 'UserController.dart';
 
 class AuthController extends GetxController {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -16,7 +17,7 @@ class AuthController extends GetxController {
 
   final String usersCollection = "users";
 
-  final Rx<UserModel> userModel = UserModel().obs;
+  final Rx<UserModel> userModel = UserModel(id: '', name: '', email: '').obs;
   final Rx<int> axisCount = 2.obs;
 
   User? get user => _firebaseUser.value;
