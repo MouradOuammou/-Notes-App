@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_note/controllers/authController.dart';
-import 'package:flutter_note/controllers/userController.dart';
-import 'package:flutter_note/screens/widgets/custom_icon_btn.dart';
+
 import 'package:get/get.dart';
+
+import '../../controllers/AuthController.dart';
+import '../../controllers/UserController.dart';
+import '../widgets/custom_icon_btn.dart';
 
 class Account extends StatelessWidget {
   final UserController userController = Get.find<UserController>();
@@ -124,7 +126,7 @@ void showSignOutDialog(BuildContext context) async {
           ElevatedButton(
             onPressed: () {
               Get.back();
-              authController.signout();
+              authController.signOut();
               Get.close(2);
             },
             style: ElevatedButton.styleFrom(
