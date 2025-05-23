@@ -1,5 +1,4 @@
-import 'dart:io';
-
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -12,14 +11,15 @@ import 'firebase_options.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // Initialisation conditionnelle de Firebase
-  if (!Platform.isLinux && !Platform.isWindows && !Platform.isMacOS) {
-    await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  if (kIsWeb) {
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.web,
+    );
   } else {
-    debugPrint(" Firebase n'est pas supporté sur cette plateforme.");
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
   }
-
-  // Injection des controllers avec GetX
   Get.put<AuthController>(AuthController());
   Get.put<UserController>(UserController());
 
