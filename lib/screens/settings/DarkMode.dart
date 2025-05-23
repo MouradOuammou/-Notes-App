@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
+import '../widgets/custom_icon_btn.dart';
+
 class DarkMode extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
