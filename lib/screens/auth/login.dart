@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_note/controllers/authController.dart';
-import 'package:flutter_note/controllers/userController.dart';
-import 'package:flutter_note/screens/auth/signup.dart';
+
 import 'package:get/get.dart';
+
+import '../../controllers/AuthController.dart';
+import '../../controllers/UserController.dart';
 
 class Login extends StatelessWidget {
   Login({Key? key}) : super(key: key);
