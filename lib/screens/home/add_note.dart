@@ -83,5 +83,28 @@ class AddNotePage extends StatelessWidget {
     ),
     ),
     )
+        // Bouton flottant "Save" pour enregistrer la note
+        floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+      // On empêche d'ajouter une note si titre ET corps sont vides
+      if (titleController.text.trim().isEmpty &&
+          bodyController.text.trim().isEmpty) {
+        showEmptyTitleDialog(context);
+      } else {
+        // Ajout de la note à la base de données
+        Database().addNote(
+          authController.user.uid,
+          titleController.text.trim(),
+          bodyController.text.trim(),
+        );
+        Get.back();
+      }
+    },
+    label: const Text("Save"),
+    icon: const Icon(Icons.save),
+    ),
+    );
+  }
+}
 
 }
