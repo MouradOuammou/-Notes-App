@@ -118,5 +118,46 @@ class _ShowNoteState extends State<ShowNote> {
       ),
     );
   }
+  void showDeleteDialog(BuildContext context, NoteModel noteData) {
+    final AuthController authController = Get.find<AuthController>();
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(10.0))),
+          title: Text(
+            "Delete Note?",
+            style: Theme.of(context).textTheme.titleLarge,
+          ),
+          content: Text(
+            "Are you sure you want to delete this note?",
+            style: Theme.of(context).textTheme.titleMedium,
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: Text(
+                "Yes",
+                style: Theme.of(context).textTheme.titleMedium,
+              ),
+              onPressed: () {
+                Get.back(); // Ferme la boîte de dialogue
+                Database().delete(authController.user.uid, noteData.id);
+                Get.back(closeOverlays: true); // Retour arrière après suppression
+              },
+            ),
+            TextButton(
+              child: Text(
+                "No",
+                style: Theme.of(context).textTheme.titleMedium,
+              ),
+              onPressed: () => Get.back(),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
 }
 }
