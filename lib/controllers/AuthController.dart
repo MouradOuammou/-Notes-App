@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../models/user.dart';
+import '../services/database.dart';
 import 'UserController.dart';
 
 class AuthController extends GetxController {
@@ -99,7 +100,7 @@ class AuthController extends GetxController {
   Future<void> signOut() async {
     try {
       await _auth.signOut();
-      Get.find<UserController>().user = UserModel();
+      Get.find<UserController>().user = UserModel(id: '', name: '', email: '');
     } catch (e) {
       Get.snackbar(
         'Error signing out',

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../models/noteModel.dart';
+import '../services/database.dart';
 import 'AuthController.dart';
 
 class NoteController extends GetxController {
