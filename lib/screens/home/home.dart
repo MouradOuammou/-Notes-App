@@ -20,7 +20,7 @@ class HomePage extends GetWidget<AuthController> {
     Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
-    // Bouton pour basculer entre affichage liste et grille
+    // Bouton pour basculer s affichage liste et grille
     CustomIconBtn(
     color: Theme.of(context).colorScheme.background,
     onPressed: () {
@@ -69,5 +69,13 @@ class HomePage extends GetWidget<AuthController> {
     )),
     ),
     ),
-
+      // Bouton flottant pour ajouter une nouvelle note
+      floatingActionButton: FloatingActionButton(
+        tooltip: "Add Note",
+        onPressed: () {
+          Get.to(() => AddNotePage());
+        },
+        child: const Icon(Icons.note_add, size: 30),
+      ),
+    );
   }
