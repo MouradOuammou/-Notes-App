@@ -24,5 +24,96 @@ class NoteList extends StatelessWidget {
   ];
 
   final Random random = Random();
+  @override
+  Widget build(BuildContext context) {
+    return Obx(() {
+      if (noteController.notes.isEmpty) {
+        return const Expanded(
+          child: Center(
+            child: Text(
+              "No notes yet.",
+              style: TextStyle(fontSize: 18, color: Colors.grey),
+            ),
+          ),
+        );
+      }
 
+      return Expanded(
+        child: StaggeredGridView.countBuilder(
+          itemCount: noteController.notes.length,
+          staggeredTileBuilder: (index) =>
+              StaggeredTile.fit(authController.axisCount.value),
+          crossAxisCount: 4,
+          mainAxisSpacing: 10,
+          crossAxisSpacing: 10,
+          itemBuilder: (context, index) {
+            final note = noteController.notes[index];
+            final formattedDate =
+            DateFormat.yMMMd().format(note.creationDate.toDate());
+            final Color bg = lightColors[random.nextInt(lightColors.length)];
+
+            return GestureDetector(
+              onTap: () {
+                Get.to(() => ShowNote(index: index, noteData: note));
+              },
+              child: Container(
+                padding: const EdgeInsets.only(
+                  bottom: 10,
+                  left: 10,
+                  right: 10,
+                ),
+                decoration: BoxDecoration(
+                  color: bg,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Column(
+                  children: [
+                    ListTile(
+                      contentPadding: const EdgeInsets.only(
+                        top: 5,
+                        right: 8,
+                        left: 8,
+                        bottom: 0,
+                      ),
+                      title: Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 8),
+                        child: Text(
+                          note.title,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: const TextStyle(
+                            color: Colors.black,
+                            fontSize: 18,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ),
+                      subtitle: Text(
+                        note.body,
+                        maxLines: 10,
+                        overflow: TextOverflow.ellipsis,
+                        style: const TextStyle(
+                          fontSize: 14,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Text(
+                          formattedDate,
+                          style: const TextStyle(color: Colors.black),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            );
+          },
+        ),
+      );
+    });
+  }
 }
