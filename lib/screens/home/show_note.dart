@@ -158,6 +158,32 @@ class _ShowNoteState extends State<ShowNote> {
       },
     );
   }
-
+  void showSameContentDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(10.0))),
+          title: Text(
+            "No change in content!",
+            style: Theme.of(context).textTheme.titleLarge,
+          ),
+          content: Text(
+            "There is no change in content.",
+            style: Theme.of(context).textTheme.titleMedium,
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: Text(
+                "Okay",
+                style: Theme.of(context).textTheme.titleMedium,
+              ),
+              onPressed: () => Get.back(),
+            ),
+          ],
+        );
+      },
+    );
 }
 }
