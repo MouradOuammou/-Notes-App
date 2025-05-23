@@ -6,6 +6,7 @@ import 'package:noteapp/utils/root.dart';
 import 'package:noteapp/utils/theme.dart';
 import 'controllers/AuthController.dart';
 import 'controllers/UserController.dart';
+import 'firebase_options.dart';
 
 
 void main() async {

@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "871125783880",
+    "firebase_url": "https://vue-chat-9380b-default-rtdb.firebaseio.com",
+    "project_id": "vue-chat-9380b",
+    "storage_bucket": "vue-chat-9380b.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:871125783880:android:b2981bb3b56c2dbcc10f7d",
+        "android_client_info": {
+          "package_name": "note.ouammou.noteapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBzJrhUDm-Y_ncbcsbvRkUp6fE1lRqFniQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
