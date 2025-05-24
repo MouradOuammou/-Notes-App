@@ -104,7 +104,8 @@ class AddNotePage extends StatelessWidget {
   }
 
   void _handleSaveNote(BuildContext context) {
-    if (titleController.text.trim().isEmpty && bodyController.text.trim().isEmpty) {
+    if (titleController.text.trim().isEmpty &&
+        bodyController.text.trim().isEmpty) {
       _showEmptyNoteDialog(context);
     } else {
       _saveNoteToDatabase();
@@ -113,11 +114,20 @@ class AddNotePage extends StatelessWidget {
   }
 
   void _saveNoteToDatabase() {
-    Database().addNote(
-      authController.user!.uid,
-      titleController.text.trim(),
-      bodyController.text.trim(),
-    );
+    final uid = userController.user.id;
+    if (uid.isNotEmpty) {
+      Database().addNote(
+        uid,
+        titleController.text.trim(),
+        bodyController.text.trim(),
+      );
+    } else {
+      Get.snackbar(
+        'Erreur',
+        'Utilisateur non connecté, impossible de sauvegarder la note',
+        snackPosition: SnackPosition.BOTTOM,
+      );
+    }
   }
 
   void _showEmptyNoteDialog(BuildContext context) {

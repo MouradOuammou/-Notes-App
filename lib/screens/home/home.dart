@@ -29,7 +29,7 @@ class HomePage extends GetWidget<AuthController> {
                         color: Theme
                             .of(context)
                             .colorScheme
-                            .background,
+                            .surface,
                         onPressed: () {
                           // Change la valeur de axisCount entre 2 et 4
                           authController.axisCount.value =
@@ -41,9 +41,9 @@ class HomePage extends GetWidget<AuthController> {
                       ),
 
                       // Titre de la page
-                      Text(
+                      const Text(
                         "Notes",
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 24,
                           fontWeight: FontWeight.bold,
                         ),
@@ -54,7 +54,7 @@ class HomePage extends GetWidget<AuthController> {
                         color: Theme
                             .of(context)
                             .colorScheme
-                            .background,
+                            .surface,
                         onPressed: () {
                           Get.to(() => Setting());
                         },
