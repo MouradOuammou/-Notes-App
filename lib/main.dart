@@ -1,4 +1,4 @@
-import 'package:flutter/foundation.dart' show kIsWeb;
+import 'package:flutter/foundation.dart' show kIsWeb, kDebugMode;
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -6,6 +6,7 @@ import 'package:noteapp/utils/root.dart';
 import 'package:noteapp/utils/theme.dart';
 import 'controllers/AuthController.dart';
 import 'controllers/UserController.dart';
+import 'controllers/NoteController.dart'; // Ajout de l'import
 import 'firebase_options.dart';
 
 void main() async {
@@ -22,22 +23,29 @@ void main() async {
         options: DefaultFirebaseOptions.currentPlatform,
       );
     }
-    print('Firebase initialized successfully');
+    if (kDebugMode) {
+      print('Firebase initialized successfully');
+    }
 
-    // Initialisation des contrôleurs avec gestion d'erreur
+    // Initialisation des contrôleurs avec gestion d'erreur et ordre correct
     try {
-      Get.put<AuthController>(AuthController());
-      Get.put<UserController>(UserController());
+      Get.put<AuthController>(AuthController(), permanent: true);
+      Get.put<UserController>(UserController(), permanent: true);
+      Get.put<NoteController>(NoteController(), permanent: true); // Ajout du NoteController
     } catch (e) {
-      print('Error initializing controllers: $e');
-      runApp(ErrorApp(error: 'Controller Initialization Error'));
+      if (kDebugMode) {
+        print('Error initializing controllers: $e');
+      }
+      runApp(const ErrorApp(error: 'Controller Initialization Error'));
       return;
     }
 
     runApp(const MyApp());
   } catch (e) {
-    print('Error initializing Firebase: $e');
-    runApp(ErrorApp(error: 'Firebase Initialization Error'));
+    if (kDebugMode) {
+      print('Error initializing Firebase: $e');
+    }
+    runApp(const ErrorApp(error: 'Firebase Initialization Error'));
   }
 }
 
